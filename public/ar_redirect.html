@@ -1,0 +1,21 @@
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const model = params.get("model") || "Sportstech-sBike"; // fallback if not provided
+    const baseGlb = "https://3d-room-planner-s3.s3.eu-north-1.amazonaws.com/assets/models/glb/";
+    const baseUsdz = "https://3d-room-planner-s3.s3.eu-north-1.amazonaws.com/assets/models/usdz/";
+  
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  
+    const target = isIOS
+      ? `${baseUsdz}${model}.usdz`
+      : `https://d3hu0a43t9wj79.cloudfront.net/ar_viewer.html?model=${model}`;
+  
+    // Ensure the URL actually points to a model
+    if (model) {
+      location.replace(target);
+    } else {
+      alert("Model not specified.");
+    }
+  </script>
+  
+  
